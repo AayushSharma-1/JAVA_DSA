@@ -1,6 +1,6 @@
 public class LeetCode3 {
     public static void main(String[] args) {
-        System.out.println(lengthOfLongestSubstring("aab"));
+        System.out.println(lengthOfLongestSubstring("pwwkew"));
     }
     static public int lengthOfLongestSubstring(String s) {
         if(s.length() < 1) {
@@ -13,18 +13,19 @@ public class LeetCode3 {
         int j = 0;
         int max = 0;
         while(j < s.length()){
-            String sb = s.substring(i, j);
-            if((s.charAt(i)!=s.charAt(j)) && (!sb.contains((s.charAt(j) + "")))){
-                j++;
-            } else {
-                    int len = s.substring(i,j).length();
-                  if(max < len){
-                      max = len;
-                  }
-                  i = j;
-                  j++;
+            String sb = s.substring(i, j + 1);
+            max = Math.max(max,sb.length());
+            if(j == s.length() -1){
+                break;
             }
-        }
+            if(i <= j && sb.contains(s.charAt(j + 1) + "")) {
+                 i++;
+            } else {
+                j++;
+            }
+
+
+            }
         if(max == 0){
             return s.length();
         }
